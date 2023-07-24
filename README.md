@@ -1,34 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## What is a hook?
 
-## Getting Started
+Hooks were added to React in version 16.8
+Hooks allow function components to have access to state and other React features. Because of this, class components are generally no longer needed.
+Note: Although Hooks generally replace class components, there are no plans to remove classes from React.
 
-First, run the development server:
+Hooks allow us to "hook" into React features such as state and lifecycle methods.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Hook Rules
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+There are 3 rules for hooks:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Hooks can only be called inside React function components.
+2. Hooks can only be called at the top level of a component.
+3. Hooks cannot be conditional.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Note: Hooks will not work in React class components.
 
-## Learn More
+## Custom Hooks
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you have stateful logic that needs to be reused in several components, you can build your own custom Hooks.
+There are more details in the CustomHook component of this project.
