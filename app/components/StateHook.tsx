@@ -6,7 +6,7 @@
 import React, { useState } from "react";
 
 // Initalizing state at the top of the component.
-function FavoriteColor() {
+function FavoriteColor(): React.JSX.Element {
   // the first value 'color' in the array is the current state value.
   // the second value 'setColor' is the function that will update the state value.
   // the 'color' and 'setColor' values can be named anything.
@@ -30,7 +30,7 @@ function FavoriteColor() {
 
 // We can also use the useState Hook to track multiple state values and types.
 // all we need to do is call the useState Hook multiple times.
-function Car() {
+function Car(): React.JSX.Element {
   const [brand, setBrand] = useState<string>("Ford");
   const [model, setModel] = useState<string>("Mustang");
   const [color, setColor] = useState<string>("red");
@@ -46,21 +46,21 @@ function Car() {
   );
 }
 
-interface Car {
+type Car = {
   brand: string;
   model: string;
   color: string;
   year: number;
-}
+};
 
 // Or, we can just use one useState Hook to track an object instead of multiple useState Hooks.
-function CarObject() {
+function CarObject(): React.JSX.Element {
   const [car, setCar] = useState<Car>({ brand: "Ford", model: "Mustang", color: "red", year: 1964 });
 
   // when state is updated, the entire state gets overwritten.
   // so, we need to make sure to include all the properties of the object when updating state.
   // we can do this by using the spread operator.
-  const updateColor = () => {
+  const updateColor = (): void => {
     setCar((previousState) => {
       return { ...previousState, color: "YELLOW" };
     });

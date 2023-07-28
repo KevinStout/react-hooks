@@ -15,13 +15,13 @@ import { clear } from "console";
 import React, { useState, useEffect, use } from "react";
 
 // use a timer as the first example.
-function Timer() {
+function Timer(): React.JSX.Element {
   const [count, setCount] = useState<number>(0);
 
   // passing in an empty array as the second argument will only run the useEffect function once.
   useEffect(() => {
     setTimeout(() => {
-      setCount((count) => count + 1);
+      setCount((count): number => count + 1);
     }, 1000);
   }, []);
 
@@ -33,18 +33,18 @@ function Timer() {
   );
 }
 
-function Counter() {
+function Counter(): React.JSX.Element {
   const [count, setCount] = useState(0);
   const [calculation, setCalculation] = useState(0);
 
-  useEffect(() => {
-    setCalculation(() => count * 2);
+  useEffect((): void => {
+    setCalculation((): number => count * 2);
   }, [count]);
 
   return (
     <div className="w-1/2 text-center">
       <div>Count: {count}</div>
-      <button className="border-2 border-gray-100 rounded-md p-2 bg-slate-500" onClick={() => setCount((c) => ++c)}>
+      <button className="border-2 border-gray-100 rounded-md p-2 bg-slate-500" onClick={(): void => setCount((c): number => ++c)}>
         ++
       </button>
       <div>Calculation: {calculation}</div>
@@ -56,15 +56,17 @@ function Counter() {
 // Timeouts, subscriptions, event listeners, and other effects that are no longer needed should be disposed.
 // We can do this by including a return function at the end of the useEffect Hook.
 
-function CleanTimer() {
+function CleanTimer(): React.JSX.Element {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let timer = setTimeout(() => {
-      setCount((count) => count + 1);
+    //  ^?
+    let timer = setTimeout((): void => {
+      setCount((count): number => count + 1);
     }, 1000);
 
-    return () => clearTimeout(timer);
+    // clearTimeout is a helper function that clears the timer.
+    return (): void => clearTimeout(timer);
   }, []);
 
   return (

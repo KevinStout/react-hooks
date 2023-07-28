@@ -12,23 +12,24 @@ import { ReactDOM } from "react";
 
 // below is an example of prop drilling.
 // From lines 13 to 74, we are passing the state as props through each nested component.
-interface Component2Props {
+type Component2Props = {
   user: string;
-}
+};
 
-interface Component3Props {
+type Component3Props = {
   user: string;
-}
+};
 
-interface Component4Props {
+type Component4Props = {
   user: string;
-}
+};
 
-interface Component5Props {
+type Component5Props = {
   user: string;
-}
+};
 
-function Component1() {
+function Component1(): React.JSX.Element {
+  //           ^?
   const [user, setUser] = useState<string>("Kevin");
 
   return (
@@ -40,7 +41,7 @@ function Component1() {
   );
 }
 
-function Component2({ user }: Component2Props) {
+function Component2({ user }: Component2Props): React.JSX.Element {
   return (
     <>
       <h1>Component 2</h1>
@@ -49,7 +50,7 @@ function Component2({ user }: Component2Props) {
   );
 }
 
-function Component3({ user }: Component3Props) {
+function Component3({ user }: Component3Props): React.JSX.Element {
   return (
     <>
       <h1>Component 3</h1>
@@ -58,7 +59,7 @@ function Component3({ user }: Component3Props) {
   );
 }
 
-function Component4({ user }: Component4Props) {
+function Component4({ user }: Component4Props): React.JSX.Element {
   return (
     <>
       <h1>Component 4</h1>
@@ -67,7 +68,7 @@ function Component4({ user }: Component4Props) {
   );
 }
 
-function Component5({ user }: Component5Props) {
+function Component5({ user }: Component5Props): React.JSX.Element {
   return (
     <>
       <h1>Component 5</h1>
@@ -81,9 +82,9 @@ function Component5({ user }: Component5Props) {
 // We can do this by calling the createContext function from the react library.
 // The createContext function takes an argument that is the default value of the context object.
 // In this case, we are setting the default value to an empty string.
-interface UserContextProps {
+type UserContextProps = {
   user: string;
-}
+};
 
 const UserContext = createContext<UserContextProps | null>(null);
 
