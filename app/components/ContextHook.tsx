@@ -7,8 +7,11 @@
 // To illustrate, we have many nested components. The component at the top and bottom  of the stack need access to the state.
 // To do this without Context, we will need to pass the state as "props" through each nested component. This is called "prop drilling".
 
-import React, { useState } from "react";
+import React, { useState, createContext, useContext } from "react";
+import { ReactDOM } from "react";
 
+// below is an example of prop drilling.
+// From lines 13 to 74, we are passing the state as props through each nested component.
 interface Component2Props {
   user: string;
 }
@@ -26,10 +29,11 @@ interface Component5Props {
 }
 
 function Component1() {
-  const [user, setUser] = useState<string>("Jesse Hall");
+  const [user, setUser] = useState<string>("Kevin");
 
   return (
     <>
+      <h1 className="text-5xl">useContext Section</h1>
       <h1>{`Hello ${user}!`}</h1>
       <Component2 user={user} />
     </>
@@ -67,9 +71,75 @@ function Component5({ user }: Component5Props) {
   return (
     <>
       <h1>Component 5</h1>
+      <h2>{`Hello again ${user}!`}</h2>
+    </>
+  );
+}
+
+// Now, let's use Context to manage state globally.
+// First, we need to create a context object.
+// We can do this by calling the createContext function from the react library.
+// The createContext function takes an argument that is the default value of the context object.
+// In this case, we are setting the default value to an empty string.
+interface UserContextProps {
+  user: string;
+}
+
+const UserContext = createContext<UserContextProps | null>(null);
+
+function BetterComponent1() {
+  const [user, setUser] = useState<string>("Fred");
+
+  return (
+    <UserContext.Provider value={{ user }}>
+      <h1>{`Hello ${user}!`}</h1>
+      <BetterComponent2 />
+    </UserContext.Provider>
+  );
+}
+
+function BetterComponent2() {
+  return (
+    <>
+      <h1>BetterComponent 2</h1>
+      <BetterComponent3 />
+    </>
+  );
+}
+
+function BetterComponent3() {
+  return (
+    <>
+      <h1>BetterComponent 3</h1>
+      <BetterComponent4 />
+    </>
+  );
+}
+
+function BetterComponent4() {
+  return (
+    <>
+      <h1>BetterComponent 4</h1>
+      <BetterComponent5 />
+    </>
+  );
+}
+
+function BetterComponent5() {
+  const context = useContext(UserContext);
+
+  if (!context) {
+    throw new Error("BetterComponent5 must be used within a UserContext.Provider");
+  }
+
+  const { user } = context;
+
+  return (
+    <>
+      <h1>Component 5</h1>
       <h2>{`Hello ${user} again!`}</h2>
     </>
   );
 }
 
-export default Component1;
+export { Component1, BetterComponent1 };
