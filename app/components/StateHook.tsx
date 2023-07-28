@@ -11,7 +11,7 @@ function FavoriteColor() {
   // the second value 'setColor' is the function that will update the state value.
   // the 'color' and 'setColor' values can be named anything.
   // lastly we set the initial state value to "red": useState("red")
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState<string>("red");
 
   // we can include the state value anywhere in the component.
   return (
@@ -31,10 +31,10 @@ function FavoriteColor() {
 // We can also use the useState Hook to track multiple state values and types.
 // all we need to do is call the useState Hook multiple times.
 function Car() {
-  const [brand, setBrand] = useState("Ford");
-  const [model, setModel] = useState("Mustang");
-  const [color, setColor] = useState("red");
-  const [year, setYear] = useState(1964);
+  const [brand, setBrand] = useState<string>("Ford");
+  const [model, setModel] = useState<string>("Mustang");
+  const [color, setColor] = useState<string>("red");
+  const [year, setYear] = useState<number>(1964);
 
   return (
     <div className="w-1/2 text-center">
@@ -46,9 +46,16 @@ function Car() {
   );
 }
 
+interface Car {
+  brand: string;
+  model: string;
+  color: string;
+  year: number;
+}
+
 // Or, we can just use one useState Hook to track an object instead of multiple useState Hooks.
 function CarObject() {
-  const [car, setCar] = useState({ brand: "Ford", model: "Mustang", color: "red", year: 1964 });
+  const [car, setCar] = useState<Car>({ brand: "Ford", model: "Mustang", color: "red", year: 1964 });
 
   // when state is updated, the entire state gets overwritten.
   // so, we need to make sure to include all the properties of the object when updating state.
