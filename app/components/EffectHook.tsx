@@ -12,11 +12,11 @@ import { clear } from "console";
 
 // If there are multiple values that need to be tracked, pass them in as an array.
 
-import { useState, useEffect, use } from "react";
+import React, { useState, useEffect, use } from "react";
 
 // use a timer as the first example.
 function Timer() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState<number>(0);
 
   // passing in an empty array as the second argument will only run the useEffect function once.
   useEffect(() => {
