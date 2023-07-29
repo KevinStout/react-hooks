@@ -30,6 +30,7 @@ function FavoriteColor(): React.JSX.Element {
 
 // We can also use the useState Hook to track multiple state values and types.
 // all we need to do is call the useState Hook multiple times.
+//
 function Car(): React.JSX.Element {
   const [brand, setBrand] = useState<string>("Ford");
   const [model, setModel] = useState<string>("Mustang");
