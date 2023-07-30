@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FavoriteColor, Car, CarObject } from "./components/StateHook";
 import { Timer, Counter, CleanTimer } from "./components/EffectHook";
 import { Component1, BetterComponent1 } from "./components/ContextHook";
+import RefApp from "./components/RefHook";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <div className="p-4"></div>
       <BetterComponent1 />
       <hr className="border-2 w-4/6 m-4" />
+      <RefApp />
     </div>
   );
 }
