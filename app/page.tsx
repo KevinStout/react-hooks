@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FavoriteColor, Car, CarObject, LoginForm, LoginFormNoState } from "./components/StateHook";
+import { FavoriteColor, Car, CarObject, LoginForm, LoginFormNoState, BadCounter, GoodCounter } from "./components/StateHook";
 import { Timer, Counter, CleanTimer } from "./components/EffectHook";
 import { Component1, BetterComponent1 } from "./components/ContextHook";
 import { RefApp, AccessDOMUsingRef, PreviousValueUsingRef } from "./components/RefHook";
@@ -13,6 +13,8 @@ export default function Home() {
       <CarObject />
       <LoginForm />
       <LoginFormNoState />
+      <BadCounter />
+      <GoodCounter />
       <hr className="border-2 w-4/6 m-4" />
       <Timer />
       <Counter />

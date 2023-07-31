@@ -21,7 +21,7 @@ function Timer(): React.JSX.Element {
   // passing in an empty array as the second argument will only run the useEffect function once.
   useEffect(() => {
     setTimeout(() => {
-      setCount((count): number => count + 1);
+      setCount((previousCount): number => previousCount + 1);
     }, 1000);
   }, []);
 
@@ -44,7 +44,10 @@ function Counter(): React.JSX.Element {
   return (
     <div className="w-1/2 text-center">
       <div>Count: {count}</div>
-      <button className="border-2 border-gray-100 rounded-md p-2 bg-slate-500" onClick={(): void => setCount((c): number => ++c)}>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500"
+        onClick={(): void => setCount((c): number => ++c)}
+      >
         ++
       </button>
       <div>Calculation: {calculation}</div>
@@ -62,7 +65,7 @@ function CleanTimer(): React.JSX.Element {
   useEffect(() => {
     //  ^?
     let timer = setTimeout((): void => {
-      setCount((count): number => count + 1);
+      setCount((previousCount): number => previousCount + 1);
     }, 1000);
 
     // clearTimeout is a helper function that clears the timer.

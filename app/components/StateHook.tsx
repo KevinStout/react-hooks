@@ -198,4 +198,64 @@ function LoginFormNoState(): React.JSX.Element {
   );
 }
 
-export { FavoriteColor, Car, CarObject, LoginForm, LoginFormNoState };
+// Another mistake that can be made when using the useState Hook is to not use the function form of the setState function.
+// using the state in this way can lead to unexpected results.
+// An example would be if we call the setCount function multiple times in a row it will not update the count correctly.
+// React batches state updates, so if we call the setCount function multiple times in a row it will not update the count correctly.
+
+// First lets look at a simple counter that uses the useState hook to track the count.
+function BadCounter(): React.JSX.Element {
+  const [count, setCount] = useState<number>(0);
+
+  function adjustCount(amount: number) {
+    setCount(count + amount);
+  }
+
+  return (
+    <div>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500"
+        onClick={() => adjustCount(-1)}
+      >
+        -
+      </button>
+      <span>{count}</span>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500"
+        onClick={() => adjustCount(1)}
+      >
+        +
+      </button>
+    </div>
+  );
+}
+
+// Now lets refactor the BadCounter to use the function form of the setState function.
+function GoodCounter(): React.JSX.Element {
+  const [count, setCount] = useState<number>(0);
+
+  function adjustCount(amount: number) {
+    setCount((previousCount): number => previousCount + amount);
+    // setCount(count + amount);
+  }
+
+  return (
+    <div>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500"
+        onClick={() => adjustCount(-1)}
+      >
+        -
+      </button>
+      <span>{count}</span>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500"
+        onClick={() => adjustCount(1)}
+      >
+        +
+      </button>
+    </div>
+  );
+}
+
+export { FavoriteColor, Car, CarObject, LoginForm, LoginFormNoState, BadCounter, GoodCounter };
