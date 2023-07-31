@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FavoriteColor, Car, CarObject } from "./components/StateHook";
 import { Timer, Counter, CleanTimer } from "./components/EffectHook";
 import { Component1, BetterComponent1 } from "./components/ContextHook";
-import RefApp from "./components/RefHook";
+import { RefApp, AccessDOMUsingRef, PreviousValueUsingRef } from "./components/RefHook";
 
 export default function Home() {
   return (
@@ -21,6 +21,9 @@ export default function Home() {
       <BetterComponent1 />
       <hr className="border-2 w-4/6 m-4" />
       <RefApp />
+      <AccessDOMUsingRef />
+      <PreviousValueUsingRef />
+      <hr className="border-2 w-4/6 m-4" />
     </div>
   );
 }
