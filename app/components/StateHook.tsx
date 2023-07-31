@@ -18,10 +18,18 @@ function FavoriteColor(): React.JSX.Element {
     <div className="w-1/2 text-center">
       <h1 className="text-5xl">useState Section</h1>
       <h1>My Favorite Color is {color}</h1>
-      <button className="border-2 border-gray-100 rounded-md p-2 m-2 bg-slate-500" type="button" onClick={() => setColor("BLUE")}>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 m-2 bg-slate-500"
+        type="button"
+        onClick={() => setColor("BLUE")}
+      >
         BLUE
       </button>
-      <button className="border-2 border-gray-100 rounded-md p-2 m-2 bg-slate-500" type="button" onClick={() => setColor("GREEN")}>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 m-2 bg-slate-500"
+        type="button"
+        onClick={() => setColor("GREEN")}
+      >
         GREEN
       </button>
     </div>
@@ -74,11 +82,120 @@ function CarObject(): React.JSX.Element {
       <p>
         It is a {car.color} {car.model} from {car.year}.
       </p>
-      <button className="border-2 border-gray-100 rounded-md p-2 bg-slate-500" type="button" onClick={updateColor}>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500"
+        type="button"
+        onClick={updateColor}
+      >
         YELLOW
       </button>
     </div>
   );
 }
 
-export { FavoriteColor, Car, CarObject };
+// Now lets look at some mistakes that can be made when using the useState Hook.
+// Here is a component that has an email and password input field along with a submit button.
+// In this case we do not need to track the input values as state.
+function LoginForm(): React.JSX.Element {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log({ email, password });
+  }
+
+  return (
+    <form
+      className="m-2"
+      onSubmit={onSubmit}
+    >
+      <label htmlFor="email1">Email</label>
+      <br />
+      <input
+        className="text-black"
+        id="email1"
+        type="text"
+        placeholder="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <br />
+      <label htmlFor="password1">Password</label>
+      <br />
+      <input
+        className="text-black"
+        id="password1"
+        type="password"
+        placeholder="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <br />
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  );
+}
+
+// lets refactor the LoginForm to not use state.
+import { useRef } from "react";
+
+function LoginFormNoState(): React.JSX.Element {
+  //  const [email, setEmail] = useState<string>("");
+  //  const [password, setPassword] = useState<string>("");
+  const emailRef = useRef<HTMLInputElement>(null); // we need to tell useRef what type of element we are referencing and initialize it to null, it does not like undefined.
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  function onSubmitNoState(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log({ email: emailRef.current?.value, password: passwordRef.current?.value });
+  }
+
+  return (
+    <div>
+      <div className="text-2xl">No state login form</div>
+      <form
+        className="m-2"
+        onSubmit={onSubmitNoState}
+      >
+        <label htmlFor="email2">Email</label>
+        <br />
+        <input
+          className="text-black"
+          id="email2"
+          type="text"
+          placeholder="email"
+          // value={email}
+          // onChange={(e) => setEmail(e.target.value)}
+          ref={emailRef}
+        />
+        <br />
+        <label htmlFor="password2">Password</label>
+        <br />
+        <input
+          className="text-black"
+          id="password2"
+          type="password"
+          placeholder="password"
+          // value={password}
+          // onChange={(e) => setPassword(e.target.value)}
+          ref={passwordRef}
+        />
+        <br />
+        <button
+          className="border-2 border-gray-100 rounded-md p-2 bg-slate-500"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export { FavoriteColor, Car, CarObject, LoginForm, LoginFormNoState };

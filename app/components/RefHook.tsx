@@ -25,7 +25,12 @@ function RefApp(): React.JSX.Element {
   return (
     <div>
       <div className="text-5xl">useRef Section</div>
-      <input className="text-black" type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+      <input
+        className="text-black"
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
       <h1>Render Count: {count.current}</h1>
     </div>
   );
@@ -39,8 +44,15 @@ function AccessDOMUsingRef(): React.JSX.Element {
   };
   return (
     <div>
-      <input className="text-black" type="text" ref={inputElement} />
-      <button className="border-2 border-gray-100 rounded-md p-2 bg-slate-500 m-2" onClick={focudOnInput}>
+      <input
+        className="text-black"
+        type="text"
+        ref={inputElement}
+      />
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500 m-2"
+        onClick={focudOnInput}
+      >
         Focus on Input
       </button>
     </div>
@@ -62,7 +74,12 @@ function PreviousValueUsingRef(): React.JSX.Element {
 
   return (
     <div>
-      <input className="text-black" type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+      <input
+        className="text-black"
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
       <h2>Current Value: {inputValue}</h2>
       <h2>Previous Value: {previousValue.current}</h2>
     </div>
