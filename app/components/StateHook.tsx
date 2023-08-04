@@ -230,7 +230,7 @@ function BadCounter(): React.JSX.Element {
   );
 }
 
-// Now lets refactor the BadCounter to use the function form of the setState function.
+// Now lets refactor the BadCounter to use the function form of the setState function. This will ensure that the count is updated correctly.
 function GoodCounter(): React.JSX.Element {
   const [count, setCount] = useState<number>(0);
 
