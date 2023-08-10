@@ -15,7 +15,7 @@ function FavoriteColor(): React.JSX.Element {
 
   // we can include the state value anywhere in the component.
   return (
-    <div className="w-1/2 text-center">
+    <section className="w-1/2 text-center">
       <h1 className="text-5xl">useState Section</h1>
       <h1>My Favorite Color is {color}</h1>
       <button
@@ -32,7 +32,7 @@ function FavoriteColor(): React.JSX.Element {
       >
         GREEN
       </button>
-    </div>
+    </section>
   );
 }
 
@@ -46,12 +46,12 @@ function Car(): React.JSX.Element {
   const [year, setYear] = useState<number>(1964);
 
   return (
-    <div className="w-1/2 text-center">
+    <section className="w-1/2 text-center">
       <h1 className="pt-4">My {brand}</h1>
       <p>
         It is a {color} {model} from {year}.
       </p>
-    </div>
+    </section>
   );
 }
 
@@ -76,7 +76,7 @@ function CarObject(): React.JSX.Element {
   };
 
   return (
-    <div className="w-1/2 text-center">
+    <section className="w-1/2 text-center">
       <h1 className="pt-4">car object</h1>
       <h1>My {car.brand}</h1>
       <p>
@@ -89,7 +89,7 @@ function CarObject(): React.JSX.Element {
       >
         YELLOW
       </button>
-    </div>
+    </section>
   );
 }
 
