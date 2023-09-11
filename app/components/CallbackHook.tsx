@@ -24,7 +24,12 @@ const Todos: React.FC<TodosProps> = ({ todos, addTodo }) => {
       {todos.map((todo, index) => {
         return <p key={index}>{todo}</p>;
       })}
-      <button onClick={addTodo}>Add Todo</button>
+      <button
+        className="border-2 border-gray-100 rounded-md p-2 bg-slate-500 m-2"
+        onClick={addTodo}
+      >
+        Add Todo
+      </button>
     </>
   );
 };
