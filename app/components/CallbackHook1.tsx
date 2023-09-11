@@ -24,7 +24,12 @@ const NotePad: React.FC = () => {
       <hr />
       <div>
         Count: {count}
-        <button onClick={increment}>+</button>
+        <button
+          className="border-2 border-gray-100 rounded-md p-2 bg-slate-500 m-2"
+          onClick={increment}
+        >
+          +
+        </button>
       </div>
     </>
   );

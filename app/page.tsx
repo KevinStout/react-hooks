@@ -5,6 +5,7 @@ import { Component1, BetterComponent1 } from "./components/ContextHook";
 import { RefApp, AccessDOMUsingRef, PreviousValueUsingRef } from "./components/RefHook";
 import Todos from "./components/ReducerHook";
 import CallbackHook1 from "./components/CallbackHook1";
+import MemoHook from "./components/MemoHook";
 
 export default function Home() {
   return (
@@ -33,6 +34,8 @@ export default function Home() {
       <Todos />
       <hr className="border-2 w-4/6 m-4" />
       <CallbackHook1 />
+      <hr className="border-2 w-4/6 m-4" />
+      <MemoHook />
       <hr className="border-2 w-4/6 m-4" />
     </div>
   );
