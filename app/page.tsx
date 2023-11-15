@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import { FavoriteColor, Car, CarObject, LoginForm, LoginFormNoState, BadCounter, GoodCounter } from "./components/StateHook";
 import { Timer, Counter, CleanTimer } from "./components/EffectHook";
 import { Component1, BetterComponent1 } from "./components/ContextHook";
